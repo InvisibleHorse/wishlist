@@ -11,7 +11,7 @@ type CardProps = {
 };
 
 const cardStatusVariants = cva(
-  "text-base border-2 px-2 py-1.5 rounded-full w-fit",
+  "text-sm border-2 px-2 py-1.5 rounded-full w-fit",
   {
     variants: {
       state: {
@@ -29,10 +29,10 @@ const Card = ({ card }: { card: CardProps }) => {
   return (
     <div className="bg-wish-card-beige rounded-lg flex flex-col md:flex-row">
       <div
-        className="w-full md:w-48 bg-cover bg-center bg-no-repeat overflow-hidden rounded-tl-lg rounded-tr-lg md:rounded-tr-none md:rounded-tl-lg md:rounded-bl-lg aspect-[3/4] md:aspect-square"
+        className="md:w-56   w-full aspect-square bg-cover bg-center bg-no-repeat overflow-hidden rounded-tl-lg rounded-tr-lg md:rounded-tr-none md:rounded-tl-lg md:rounded-bl-lg"
         style={{ backgroundImage: `url(${card.image})` }}
       />
-      <div className="flex flex-col flex-1 w-full p-4 items-start justify-between">
+      <div className="flex flex-col w-full p-4 items-start justify-center gap-8">
         <div className="flex flex-row justify-between items-start w-full">
           <div className="flex flex-col gap-2">
             <h3 className="text-wish-green-main text-2xl italiana-regular">{card.title}</h3>
@@ -48,7 +48,7 @@ const Card = ({ card }: { card: CardProps }) => {
         </div>
         <div className="flex flex-row justify-end gap-4 items-center w-full">
             <Button variant="default" startIcon={<LinkIcon size={16}/>}>посилання</Button>
-            <Button variant="call-to-action" startIcon={<GiftIcon size={16}/>}>беру!</Button>
+            <Button variant="call-to-action" startIcon={<GiftIcon size={16}/>} disabled={!card.state}>беру!</Button>
         </div>
       </div>
     </div>
